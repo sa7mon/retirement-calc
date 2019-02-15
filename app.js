@@ -10,7 +10,6 @@ var death_age = 100;
 
 function init() {
     // initial_age = $("#inp_initial_age").val();
-    
     calculate();
 }
 
@@ -18,15 +17,21 @@ function calculate() {
     var principal = initial_nest_egg;
     var current_salary = initial_salary;
     
-    for (var age = initial_age; age < retire_age; age++) {
+    for (var age = initial_age + 1; age < retire_age; age++) {
+        // Yearly salary increase
+        current_salary = current_salary + (current_salary * 0.02)
+        
         // Annual contribution from salary at start of compounding period
         principal += current_salary * annual_contrib_percent;
         
+        // Compute interest and add to total
         var interest = principal * annual_nest_egg_grow_percent;
         principal += interest;
-        console.log("age: ", age, " principal: ", round(principal, 2), " interest: ", round(interest, 2));
+        
+        console.log("age:", age, "salary:", current_salary, "principal:", round(principal, 2), "interest:", round(interest, 2));
     }
 }
+
 
 function round(value, decimals) {
     /* http://www.jacklmoore.com/notes/rounding-in-javascript/ */
