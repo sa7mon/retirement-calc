@@ -17,86 +17,199 @@
 <body>
   <br />
   <br />
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-6">
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="button" class="btn btn-success">+ Add Run</button>
+          </div>
+        </div>
         <form id="form-1">
           <div class="form-group row">
-            <label for="inp_current_age" class="col-sm-6 col-form-label">Current Age</label>
+            <label for="inp_current_age-1" class="col-sm-6 col-form-label"></label>
+            <div class="col-sm-2 text-center">
+              <span><strong>Run 1</strong></span>
+            </div>
+            <div class="col-sm-2 text-center">
+              <span><strong>Run 2</strong></span>
+            </div>
+            <div class="col-sm-2 text-center">
+              <span><strong>Run 3</strong></span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inp_current_age-1" class="col-sm-6 col-form-label">Current Age</label>
             <div class="col-sm-2">
-              <input type="number" class="form-control" id="inp_current_age" value="25" placeholder="25">
+              <input type="number" class="form-control" id="inp_current_age-1" value="25" placeholder="25">
+            </div>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="inp_current_age-2" value="25" placeholder="25">
+            </div>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="inp_current_age-3" value="25" placeholder="25">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inp_curr_nest_egg" class="col-sm-6 col-form-label">Current Nest Egg</label>
-            <div class="col-sm-3 input-group">
+            <label for="inp_curr_nest_egg-1" class="col-sm-6 col-form-label">Current Nest Egg</label>
+            <div class="col-sm-2 input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input type="number" class="form-control" id="inp_curr_nest_egg" value="5000" placeholder="5000">
+              <input type="number" class="form-control" id="inp_curr_nest_egg-1" value="5000" placeholder="5000">
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="inp_curr_salary" class="col-sm-6 col-form-label">Current Annual Salary</label>
-            <div class="col-sm-3 input-group">
+            <div class="col-sm-2 input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input type="number" class="form-control" id="inp_curr_salary" value="60000" placeholder="60000">
+              <input type="number" class="form-control" id="inp_curr_nest_egg-2" value="5000" placeholder="5000">
+            </div>
+            <div class="col-sm-2 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" id="inp_curr_nest_egg-3" value="5000" placeholder="5000">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inp_contribution_percent" class="col-sm-6 col-form-label">Annual Contribution (% of income)</label>
-            <div class="col-sm-3 input-group">
-              <input type="number" class="form-control" id="inp_contribution_percent" value="15" placeholder="15">
+            <label for="inp_curr_salary-1" class="col-sm-6 col-form-label">Current Annual Salary</label>
+            <div class="col-sm-2 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" id="inp_curr_salary-1" value="60000" placeholder="60000">
+            </div>
+            <div class="col-sm-2 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" id="inp_curr_salary-2" value="60000" placeholder="60000">
+            </div>
+            <div class="col-sm-2 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" id="inp_curr_salary-3" value="60000" placeholder="60000">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inp_contribution_percent-1" class="col-sm-6 col-form-label">Annual Contribution (% of income)</label>
+            <div class="col-sm-2 input-group">
+              <input type="number" class="form-control" id="inp_contribution_percent-1" value="15" placeholder="15">
+              <div class="input-group-append">
+                <span class="input-group-text">%</span>
+              </div>
+            </div>
+            <div class="col-sm-2 input-group">
+              <input type="number" class="form-control" id="inp_contribution_percent-2" value="15" placeholder="15">
+              <div class="input-group-append">
+                <span class="input-group-text">%</span>
+              </div>
+            </div>
+            <div class="col-sm-2 input-group">
+              <input type="number" class="form-control" id="inp_contribution_percent-3" value="15" placeholder="15">
               <div class="input-group-append">
                 <span class="input-group-text">%</span>
               </div>
             </div>
           </div>
           <div class="form-group row">
-            <label for="inp_retire_age" class="col-sm-6 col-form-label">Retirement Age</label>
+            <label for="inp_retire_age-1" class="col-sm-6 col-form-label">Retirement Age</label>
             <div class="col-sm-2">
-              <input type="number" class="form-control" id="inp_retire_age" value="62" placeholder="62">
+              <input type="number" class="form-control" id="inp_retire_age-1" value="62" placeholder="62">
+            </div>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="inp_retire_age-2" value="62" placeholder="62">
+            </div>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="inp_retire_age-3" value="62" placeholder="62">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inp_nest_egg_growth" class="col-sm-6 col-form-label">Avg annual nest egg growth</label>
-            <div class="col-sm-3 input-group">
-              <input type="number" class="form-control" id="inp_nest_egg_growth" value="4" placeholder="4">
+            <label for="inp_nest_egg_growth-1" class="col-sm-6 col-form-label">Avg annual nest egg growth</label>
+            <div class="col-sm-2 input-group">
+              <input type="number" class="form-control" id="inp_nest_egg_growth-1" value="4" placeholder="4">
+              <div class="input-group-append">
+                <span class="input-group-text">%</span>
+              </div>
+            </div>
+            <div class="col-sm-2 input-group">
+              <input type="number" class="form-control" id="inp_nest_egg_growth-2" value="4" placeholder="4">
+              <div class="input-group-append">
+                <span class="input-group-text">%</span>
+              </div>
+            </div>
+            <div class="col-sm-2 input-group">
+              <input type="number" class="form-control" id="inp_nest_egg_growth-3" value="4" placeholder="4">
               <div class="input-group-append">
                 <span class="input-group-text">%</span>
               </div>
             </div>
           </div>
           <div class="form-group row">
-            <label for="inp_lame_age" class="col-sm-6 col-form-label">Lame Age</label>
+            <label for="inp_lame_age-1" class="col-sm-6 col-form-label">Lame Age</label>
             <div class="col-sm-2">
-              <input type="number" class="form-control" id="inp_lame_age" value="80" placeholder="80">
+              <input type="number" class="form-control" id="inp_lame_age-1" value="80" placeholder="80">
+            </div>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="inp_lame_age-2" value="80" placeholder="80">
+            </div>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="inp_lame_age-3" value="80" placeholder="80">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inp_active_years_income" class="col-sm-6 col-form-label">Active years target income</label>
-            <div class="col-sm-3 input-group">
+            <label for="inp_active_years_income-1" class="col-sm-6 col-form-label">Active years target income</label>
+            <div class="col-sm-2 input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input type="number" class="form-control" id="inp_active_years_income" value="50000" placeholder="50000">
+              <input type="number" class="form-control" id="inp_active_years_income-1" value="50000" placeholder="50000">
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="inp_inactive_years_income" class="col-sm-6 col-form-label">Inactive years target income</label>
-            <div class="col-sm-3 input-group">
+            <div class="col-sm-2 input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input type="number" class="form-control" id="inp_inactive_years_income" value="25000" placeholder="25000">
+              <input type="number" class="form-control" id="inp_active_years_income-2" value="50000" placeholder="50000">
+            </div>
+            <div class="col-sm-2 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" id="inp_active_years_income-3" value="50000" placeholder="50000">
             </div>
           </div>
           <div class="form-group row">
-            <label for="inp_death_age" class="col-sm-6 col-form-label">Death Age</label>
+            <label for="inp_inactive_years_income-1" class="col-sm-6 col-form-label">Inactive years target income</label>
+            <div class="col-sm-2 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" id="inp_inactive_years_income-1" value="25000" placeholder="25000">
+            </div>
+            <div class="col-sm-2 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" id="inp_inactive_years_income-2" value="25000" placeholder="25000">
+            </div>
+            <div class="col-sm-2 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" id="inp_inactive_years_income-3" value="25000" placeholder="25000">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inp_death_age-1" class="col-sm-6 col-form-label">Death Age</label>
             <div class="col-sm-2">
-              <input type="number" class="form-control" id="inp_death_age" value="100" placeholder="100">
+              <input type="number" class="form-control" id="inp_death_age-1" value="100" placeholder="100">
+            </div>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="inp_death_age-2" value="100" placeholder="100">
+            </div>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="inp_death_age-3" value="100" placeholder="100">
             </div>
           </div>
           
@@ -107,14 +220,19 @@
           </div>
       </form>
       </div>
+      <div class="col-md-6">
+        <canvas id="chart-1" width="800px" height="300px"></canvas>
+      </div>
     </div>
   </div>
+
   
   <!-- javascript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js" integrity="sha256-oSgtFCCmHWRPQ/JmR4OoZ3Xke1Pw4v50uh6pLcu+fIc=" crossorigin="anonymous"></script>
+  
   <script src="app.js"></script>
   
   <script>
