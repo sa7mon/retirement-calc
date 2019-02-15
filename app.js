@@ -39,14 +39,6 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
      *  - Draw from nest egg
      *  - Compound the interest
      */
-    console.log("calculate()");
-    
-    // for (var i = 0; i < arguments.length; i++) {
-    //     var arg = arguments[i];
-    //     console.log(arg);
-    // }
-    
-    console.log("initial_age:", initial_age, "death_age:", death_age);
     
     var current_nest_egg = initial_nest_egg;
     var current_salary = initial_salary;
