@@ -1,22 +1,33 @@
 /* global $ */
 
-var initial_age = 25;
-var initial_nest_egg = 5000;
-var initial_salary = 60000;
-var annual_contrib_percent = 0.15;
-var retire_age = 62;
-var lame_age = 80;
-var annual_nest_egg_grow_percent = 0.04;
-var death_age = 100;
-var active_years_income = 50000;
-var lame_years_income = 25000
-
 function init() {
-    // initial_age = $("#inp_initial_age").val();
-    calculate();
+    
+    $("#form-1").submit(function(e) {
+        e.preventDefault();
+        console.log("Form submitted");
+        
+        var initial_age = Number($('#inp_current_age').val());
+        var initial_nest_egg = Number($("#inp_curr_nest_egg").val());
+        var initial_salary = Number($("#inp_curr_salary").val());
+        var annual_contrib_percent = Number($("#inp_contribution_percent").val()) / 100;
+        var retire_age = Number($("#inp_retire_age").val());
+        var annual_nest_egg_grow_percent = Number($("#inp_nest_egg_growth").val()) / 100;
+        var lame_age = Number($("#inp_lame_age").val());
+        var death_age = Number($("#inp_death_age").val());
+        var active_years_income = Number($("#inp_active_years_income").val());
+        var lame_years_income = Number($("#inp_inactive_years_income").val());
+        
+        calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib_percent, 
+                   retire_age, annual_nest_egg_grow_percent, lame_age, death_age, 
+                   active_years_income, lame_years_income);
+    });
+    
 }
 
-function calculate() {
+function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib_percent, 
+                    retire_age, annual_nest_egg_grow_percent, lame_age, death_age, 
+                    active_years_income, lame_years_income) {
+                        
     /* Order of operations
      * 
      * Not retired
@@ -28,6 +39,14 @@ function calculate() {
      *  - Draw from nest egg
      *  - Compound the interest
      */
+    console.log("calculate()");
+    
+    // for (var i = 0; i < arguments.length; i++) {
+    //     var arg = arguments[i];
+    //     console.log(arg);
+    // }
+    
+    console.log("initial_age:", initial_age, "death_age:", death_age);
     
     var current_nest_egg = initial_nest_egg;
     var current_salary = initial_salary;
