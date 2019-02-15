@@ -33,7 +33,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input type="number" class="form-control" id="inp_curr_nest_egg" value="2000" placeholder="2000">
+              <input type="number" class="form-control" id="inp_curr_nest_egg" value="5000" placeholder="5000">
             </div>
           </div>
           <div class="form-group row">
@@ -48,7 +48,7 @@
           <div class="form-group row">
             <label for="inp_contribution_percent" class="col-sm-6 col-form-label">Annual Contribution (% of income)</label>
             <div class="col-sm-4 input-group">
-              <input type="number" class="form-control" id="inp_contribution_percent" value="12" placeholder="12">
+              <input type="number" class="form-control" id="inp_contribution_percent" value="15" placeholder="15">
               <div class="input-group-append">
                 <span class="input-group-text">%</span>
               </div>
@@ -57,7 +57,7 @@
           <div class="form-group row">
             <label for="inp_retire_age" class="col-sm-6 col-form-label">Retirement Age</label>
             <div class="col-sm-4">
-              <input type="number" class="form-control" id="inp_retire_age" value="65" placeholder="65">
+              <input type="number" class="form-control" id="inp_retire_age" value="62" placeholder="62">
             </div>
           </div>
           <div class="form-group row">
@@ -69,18 +69,31 @@
               </div>
             </div>
           </div>
-          <!--<div class="form-group row">-->
-          <!--  <label for="inp_age_ssa_start" class="col-sm-6 col-form-label">Age to start drawing SSA (62+)</label>-->
-          <!--  <div class="col-sm-4">-->
-          <!--    <input type="number" class="form-control" id="inp_age_ssa_start" value="65" placeholder="65" disabled>-->
-          <!--  </div>-->
-          <!--</div>-->
-          <!--<div class="form-group row">-->
-          <!--  <label for="inp_lame_age" class="col-sm-6 col-form-label">Lame Age (you do nothing)</label>-->
-          <!--  <div class="col-sm-4">-->
-          <!--    <input type="number" class="form-control" id="inp_lame_age" value="75" placeholder="75" disabled>-->
-          <!--  </div>-->
-          <!--</div>-->
+          <div class="form-group row">
+            <label for="inp_lame_age" class="col-sm-6 col-form-label">Lame Age</label>
+            <div class="col-sm-4">
+              <input type="number" class="form-control" id="inp_lame_age" value="80" placeholder="80">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inp_active_years_income" class="col-sm-6 col-form-label">Active years target income</label>
+            <div class="col-sm-4 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" id="inp_active_years_income" value="50000" placeholder="50000">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inp_inactive_years_income" class="col-sm-6 col-form-label">Inactive years target income</label>
+            <div class="col-sm-4 input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" id="inp_inactive_years_income" value="25000" placeholder="25000">
+            </div>
+          </div>
+          
           <div class="form-group row">
             <div class="col-sm-10">
               <button type="submit" class="btn btn-primary">Calculate</button>
