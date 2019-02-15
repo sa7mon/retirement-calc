@@ -40,6 +40,7 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
      *  - Compound the interest
      */
     
+    var returnData = [];
     var current_nest_egg = initial_nest_egg;
     var current_salary = initial_salary;
     
@@ -72,9 +73,17 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
         var interest = current_nest_egg * annual_nest_egg_grow_percent;
         current_nest_egg += interest;
         
-        console.log("age:", age, "retired:", is_retired, "salary:", round(current_salary, 2), 
-        "contrib:", round(contribution, 2), "draw:", nest_egg_draw, "interest:", round(interest, 2), "nest egg:", round(current_nest_egg, 2));
+        var yearData = {age: age, retired: is_retired, salary: round(current_salary, 2),
+            contrib: round(contribution, 2), draw: nest_egg_draw, interest: round(interest, 2),
+            nest_egg: round(current_nest_egg, 2)
+        };
+        console.log(yearData);
+        returnData.push(yearData);
+        // console.log("age:", age, "retired:", is_retired, "salary:", round(current_salary, 2), 
+        // "contrib:", round(contribution, 2), "draw:", nest_egg_draw, "interest:", round(interest, 2), "nest egg:", round(current_nest_egg, 2));
     }
+    
+    return returnData;
 }
 
 
