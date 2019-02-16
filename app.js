@@ -1,5 +1,15 @@
 /* global $, Chart */
 
+window.chartColors = {
+	red: 'rgb(255, 99, 132)',
+	orange: 'rgb(255, 159, 64)',
+	yellow: 'rgb(255, 205, 86)',
+	green: 'rgb(75, 192, 192)',
+	blue: 'rgb(54, 162, 235)',
+	purple: 'rgb(153, 102, 255)',
+	grey: 'rgb(201, 203, 207)'
+};
+
 function init() {
     $("#form-1").submit(function(e) {
         e.preventDefault();
@@ -32,41 +42,45 @@ function drawCharts(data1, data2, data3) {
     var nesteggValues1 = data1.map(obj => { return obj.nest_egg; });
     var ages1 = data1.map(obj => { return obj.age; });
     
+    var nesteggValues1Sampled = nthArray(nesteggValues1, 4);
+    var ages1Sampled = nthArray(ages1, 4);
+    
     var nesteggValues2 = data2.map(obj => { return obj.nest_egg; });
     var ages2 = data2.map(obj => { return obj.age; });
     
+    var nesteggValues2Sampled = nthArray(nesteggValues2, 4);
+    
     var nesteggValues3 = data3.map(obj => { return obj.nest_egg; });
     var ages3 = data3.map(obj => { return obj.age; });
+    
+    var nesteggValues3Sampled = nthArray(nesteggValues3, 4);
     
     var ctx = $("#chart-1");
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
             // labels: ["25", "35", "40", "55", "60"],
-            labels: ages1,
+            labels: ages1Sampled,
             datasets: [{
                 // label: '# of Votes',
                 // data: [12000, 13500, 15000, 17500, 19000],
-                data: nesteggValues1,
+                data: nesteggValues1Sampled,
                 fill: false,
-                borderColor: "#FF0000",
-                backgroundColor: "#FF0000",
+                // pointRadius: 0,
+                borderColor: window.chartColors.red,
+                backgroundColor: window.chartColors.red,
                 label: 'Run 1'
             },{
-                // label: '# of Votes',
-                // data: [12000, 13500, 15000, 17500, 19000],
-                data: nesteggValues2,
+                data: nesteggValues2Sampled,
                 fill: false,
-                borderColor: "#00FF00",
-                backgroundColor: "#00FF00",
+                borderColor: window.chartColors.green,
+                backgroundColor: window.chartColors.green,
                 label: 'Run 2'
             },{
-                // label: '# of Votes',
-                // data: [12000, 13500, 15000, 17500, 19000],
-                data: nesteggValues3,
+                data: nesteggValues3Sampled,
                 fill: false,
-                borderColor: "#0000FF",
-                backgroundColor: "#0000FF",
+                borderColor: window.chartColors.blue,
+                backgroundColor: window.chartColors.blue,
                 label: 'Run 3'
             }]
         },
@@ -76,7 +90,14 @@ function drawCharts(data1, data2, data3) {
                 padding: {
                     right: 20,
                 }
-            }
+            }, 
+            // scales: {
+            //     xAxes: [{
+            //         ticks: {
+            //             maxTicksLimit: 11
+            //         }
+            //     }]
+            // }
         }
     });
 }
@@ -149,4 +170,12 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
 function round(value, decimals) {
     /* http://www.jacklmoore.com/notes/rounding-in-javascript/ */
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
+function nthArray(array, n) {
+    var returnArray = [];
+    for (var i = 0; i < array.length; i=i+n) {
+      returnArray.push(array[i]);
+    }
+    return returnArray;
 }
