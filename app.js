@@ -31,29 +31,95 @@ function init() {
             var result = calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib_percent, 
                        retire_age, annual_nest_egg_grow_percent, lame_age, death_age, 
                        active_years_income, lame_years_income);
+            console.log(result);
+            
             datasets.push(result);
         }
-        drawCharts(datasets[0], datasets[1], datasets[2]);
+        drawChart1(datasets[0], datasets[1], datasets[2]);
+        drawChart2(datasets[0], datasets[1], datasets[2]);
     });
 }
 
+function drawChart2(data1, data2, data3) {
+    var drawValues1 = data1.map(obj => { return obj.draw; });
+    var drawValues1Sampled = nthArray(drawValues1, 5);
+    
+    var drawValues2 = data2.map(obj => { return obj.draw; });
+    var drawValues2Sampled = nthArray(drawValues2, 5);
+    
+    var drawValues3 = data3.map(obj => { return obj.draw; });
+    var drawValues3Sampled = nthArray(drawValues3, 5);
+    
+    var ages1 = data1.map(obj => { return obj.age; });
+    var ages1Sampled = nthArray(ages1, 5);
+    
+    var ctx = $("#chart-2");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            // labels: ["25", "35", "40", "55", "60"],
+            labels: ages1Sampled,
+            datasets: [{
+                // label: '# of Votes',
+                // data: [12000, 13500, 15000, 17500, 19000],
+                data: drawValues1Sampled,
+                fill: false,
+                // pointRadius: 0,
+                borderColor: window.chartColors.red,
+                backgroundColor: window.chartColors.red,
+                label: 'Run 1'
+            },{
+                data: drawValues2Sampled,
+                fill: false,
+                borderColor: window.chartColors.green,
+                backgroundColor: window.chartColors.green,
+                label: 'Run 2'
+            },{
+                data: drawValues3Sampled,
+                fill: false,
+                borderColor: window.chartColors.blue,
+                backgroundColor: window.chartColors.blue,
+                label: 'Run 3'
+            }]
+        },
+        options: {
+            // maintainAspectRatio: true,
+            layout: {
+                padding: {
+                    right: 20,
+                }
+            }, 
+            // scales: {
+            //     xAxes: [{
+            //         ticks: {
+            //             maxTicksLimit: 11
+            //         }
+            //     }]
+            // }
+        }
+    });
+    
+    // Show chart
+    $("#chart-2").removeClass("hidden");
+}
 
-function drawCharts(data1, data2, data3) {
+
+function drawChart1(data1, data2, data3) {
     var nesteggValues1 = data1.map(obj => { return obj.nest_egg; });
     var ages1 = data1.map(obj => { return obj.age; });
     
-    var nesteggValues1Sampled = nthArray(nesteggValues1, 4);
-    var ages1Sampled = nthArray(ages1, 4);
+    var nesteggValues1Sampled = nthArray(nesteggValues1, 5);
+    var ages1Sampled = nthArray(ages1, 5);
     
     var nesteggValues2 = data2.map(obj => { return obj.nest_egg; });
-    var ages2 = data2.map(obj => { return obj.age; });
+    // var ages2 = data2.map(obj => { return obj.age; });
     
-    var nesteggValues2Sampled = nthArray(nesteggValues2, 4);
+    var nesteggValues2Sampled = nthArray(nesteggValues2, 5);
     
     var nesteggValues3 = data3.map(obj => { return obj.nest_egg; });
-    var ages3 = data3.map(obj => { return obj.age; });
+    // var ages3 = data3.map(obj => { return obj.age; });
     
-    var nesteggValues3Sampled = nthArray(nesteggValues3, 4);
+    var nesteggValues3Sampled = nthArray(nesteggValues3, 5);
     
     var ctx = $("#chart-1");
     var myChart = new Chart(ctx, {
@@ -100,6 +166,9 @@ function drawCharts(data1, data2, data3) {
             // }
         }
     });
+    
+    // Show chart
+    $("#chart-1").removeClass("hidden");
 }
 
 /**
