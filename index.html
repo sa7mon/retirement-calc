@@ -38,12 +38,12 @@
             <div class="col-sm-2">
               <input type="number" class="form-control" id="inp_current_age-1" value="25" placeholder="25">
             </div>
-            <div class="col-sm-2">
-              <input type="number" class="form-control" id="inp_current_age-2" value="25" placeholder="25">
-            </div>
-            <div class="col-sm-2">
-              <input type="number" class="form-control" id="inp_current_age-3" value="25" placeholder="25">
-            </div>
+            <!--<div class="col-sm-2">-->
+            <!--  <input type="number" class="form-control" id="inp_current_age-2" value="25" placeholder="25">-->
+            <!--</div>-->
+            <!--<div class="col-sm-2">-->
+            <!--  <input type="number" class="form-control" id="inp_current_age-3" value="25" placeholder="25">-->
+            <!--</div>-->
           </div>
           <div class="form-group row">
             <label for="inp_curr_nest_egg-1" class="col-sm-6 col-form-label">Current Nest Egg</label>
@@ -123,19 +123,19 @@
           <div class="form-group row">
             <label for="inp_nest_egg_growth-1" class="col-sm-6 col-form-label">Avg annual nest egg growth</label>
             <div class="col-sm-2 input-group">
-              <input type="number" class="form-control" id="inp_nest_egg_growth-1" value="4" placeholder="4">
+              <input type="number" class="form-control" id="inp_nest_egg_growth-1" value="3" placeholder="3">
               <div class="input-group-append">
                 <span class="input-group-text">%</span>
               </div>
             </div>
             <div class="col-sm-2 input-group">
-              <input type="number" class="form-control" id="inp_nest_egg_growth-2" value="4" placeholder="4">
+              <input type="number" class="form-control" id="inp_nest_egg_growth-2" value="3" placeholder="3">
               <div class="input-group-append">
                 <span class="input-group-text">%</span>
               </div>
             </div>
             <div class="col-sm-2 input-group">
-              <input type="number" class="form-control" id="inp_nest_egg_growth-3" value="4" placeholder="4">
+              <input type="number" class="form-control" id="inp_nest_egg_growth-3" value="2" placeholder="2">
               <div class="input-group-append">
                 <span class="input-group-text">%</span>
               </div>
@@ -186,13 +186,13 @@
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input type="number" class="form-control" id="inp_inactive_years_income-2" value="25000" placeholder="25000">
+              <input type="number" class="form-control" id="inp_inactive_years_income-2" value="35000" placeholder="35000">
             </div>
             <div class="col-sm-2 input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text">$</span>
               </div>
-              <input type="number" class="form-control" id="inp_inactive_years_income-3" value="25000" placeholder="25000">
+              <input type="number" class="form-control" id="inp_inactive_years_income-3" value="35000" placeholder="35000">
             </div>
           </div>
           <div class="form-group row">
@@ -218,12 +218,26 @@
     </div>
   </div>
   
-  <div class="row">
+  <div class="row hidden" id="chart-row">
     <div class="col-md-6">
-      <canvas id="chart-1" class="hidden" width="800px" height="500px"></canvas>
+      <h2>Retirement Savings Size</h2>
+      <canvas id="chart-1" width="800px" height="500px"></canvas>
     </div>
     <div class="col-md-6">
-      <canvas id="chart-2" class="hidden" width="800px" height="500px"></canvas>
+      <h2>Income</h2>
+      <canvas id="chart-2" width="800px" height="500px"></canvas>
+    </div>
+  </div>
+  
+  <div class="row hidden" id="table-row">
+    <div class="col-md-10">
+      <table id="table" class="table">
+        <thead>
+          <tr>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>  
     </div>
   </div>
 

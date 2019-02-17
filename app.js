@@ -14,10 +14,13 @@ function init() {
     $("#form-1").submit(function(e) {
         e.preventDefault();
         
+        $("#chart-row").removeClass("hidden");
+        $("#table-row").removeClass("hidden");
+        
         var datasets = [];
         
         for (var i = 1; i < 4; i++) {
-            var initial_age = Number($('#inp_current_age-' + i).val());
+            var initial_age = Number($('#inp_current_age-1').val());
             var initial_nest_egg = Number($("#inp_curr_nest_egg-" + i).val());
             var initial_salary = Number($("#inp_curr_salary-" + i).val());
             var annual_contrib_percent = Number($("#inp_contribution_percent-" + i).val()) / 100;
@@ -37,7 +40,35 @@ function init() {
         }
         drawChart1(datasets[0], datasets[1], datasets[2]);
         drawChart2(datasets[0], datasets[1], datasets[2]);
+        // createTable(datasets[0]);
     });
+}
+
+function createTable(dataset) {
+    // for (var i = 0; i < Object.keys(dataset[0]).length; i++) {
+    //     var key = Object.keys(dataset[0])[i]; 
+    //     console.log(key);
+    // }
+
+    $("table#table thead tr").append("<td>Age</td>");
+    $("table#table thead tr").append("<td>Contribution</td>");
+    $("table#table thead tr").append("<td>Draw</td>");
+    $("table#table thead tr").append("<td>Interest</td>");
+    $("table#table thead tr").append("<td>Nest Egg</td>");
+    $("table#table thead tr").append("<td>Retired</td>");
+    $("table#table thead tr").append("<td>Salary</td>");
+    
+    for (var i = 0; i < dataset.length; i++) {
+        $("table#table tbody").append(`<tr>
+        <td>${dataset[i].age}</td>
+        <td>${dataset[i].contrib}</td>
+        <td>${dataset[i].draw}</td>
+        <td>${dataset[i].interest}</td>
+        <td>${dataset[i].nest_egg}</td>
+        <td>${dataset[i].retired}</td>
+        <td>${dataset[i].salary}</td>
+        </tr>`);
+    }
 }
 
 function drawChart2(data1, data2, data3) {
@@ -88,19 +119,25 @@ function drawChart2(data1, data2, data3) {
                 padding: {
                     right: 20,
                 }
-            }, 
-            // scales: {
-            //     xAxes: [{
-            //         ticks: {
-            //             maxTicksLimit: 11
-            //         }
-            //     }]
-            // }
+            },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                         return "$" + tooltipItem.yLabel.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");  
+                    }
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        callback: function(label, index, labels) {
+                            return "$" + addCommas(label);
+                        }
+                    }
+                }]
+            }
         }
     });
-    
-    // Show chart
-    $("#chart-2").removeClass("hidden");
 }
 
 
@@ -157,18 +194,24 @@ function drawChart1(data1, data2, data3) {
                     right: 20,
                 }
             }, 
-            // scales: {
-            //     xAxes: [{
-            //         ticks: {
-            //             maxTicksLimit: 11
-            //         }
-            //     }]
-            // }
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                         return "$" + tooltipItem.yLabel.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");  
+                    }
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        callback: function(label, index, labels) {
+                            return "$" + addCommas(label);
+                        }
+                    }
+                }]
+            }
         }
     });
-    
-    // Show chart
-    $("#chart-1").removeClass("hidden");
 }
 
 /**
@@ -247,4 +290,18 @@ function nthArray(array, n) {
       returnArray.push(array[i]);
     }
     return returnArray;
+}
+
+function addCommas(nStr)
+{
+    /** https://stackoverflow.com/a/26567557/2307994 **/
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
 }
