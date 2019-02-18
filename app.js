@@ -1,5 +1,8 @@
 /* global $, Chart */
 
+var chart1;
+var chart2;
+
 window.chartColors = {
 	red: 'rgb(255, 99, 132)',
 	orange: 'rgb(255, 159, 64)',
@@ -27,7 +30,7 @@ function init() {
             var retire_age = Number($("#inp_retire_age-" + i).val());
             var annual_nest_egg_grow_percent = Number($("#inp_nest_egg_growth-" + i).val()) / 100;
             var lame_age = Number($("#inp_lame_age-"+i).val());
-            var death_age = Number($("#inp_death_age-"+i).val());
+            var death_age = Number($("#inp_death_age-1").val());
             var active_years_income = Number($("#inp_active_years_income-"+i).val());
             var lame_years_income = Number($("#inp_inactive_years_income-"+i).val());
             
@@ -84,6 +87,11 @@ function drawChart2(data1, data2, data3) {
     var ages1 = data1.map(obj => { return obj.age; });
     var ages1Sampled = nthArray(ages1, 5);
     
+    if (chart2 !== undefined) {
+        console.log("Destroying chart2 before re-drawing");
+        chart2.destroy();
+    }
+    
     var ctx = $("#chart-2");
     var myChart = new Chart(ctx, {
         type: 'line',
@@ -138,6 +146,8 @@ function drawChart2(data1, data2, data3) {
             }
         }
     });
+    
+    chart2 = myChart;
 }
 
 
@@ -157,6 +167,11 @@ function drawChart1(data1, data2, data3) {
     // var ages3 = data3.map(obj => { return obj.age; });
     
     var nesteggValues3Sampled = nthArray(nesteggValues3, 5);
+    
+    if (chart1 !== undefined) {
+        console.log("Destroying chart1 before re-drawing");
+        chart1.destroy();
+    }
     
     var ctx = $("#chart-1");
     var myChart = new Chart(ctx, {
@@ -212,6 +227,8 @@ function drawChart1(data1, data2, data3) {
             }
         }
     });
+    
+    chart1 = myChart;
 }
 
 /**
