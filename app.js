@@ -135,12 +135,29 @@ function drawChart2(data1, data2, data3) {
                     }
                 }
             },
+            legend: {
+                labels: {
+                    fontColor: "#FFF",
+                }  
+            },
             scales: {
                 yAxes: [{
                     ticks: {
                         callback: function(label, index, labels) {
                             return "$" + addCommas(label);
-                        }
+                        },
+                        fontColor: "#FFF",
+                    }, 
+                    gridLines: {
+                        color: "rgba(255, 255, 255, 0.2)",
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: "#FFF",
+                    },
+                    gridLines: {
+                        color: "rgba(255, 255, 255, 0.2)",
                     }
                 }]
             }
@@ -216,12 +233,29 @@ function drawChart1(data1, data2, data3) {
                     }
                 }
             },
+            legend: {
+                labels: {
+                    fontColor: "#FFF",
+                }  
+            },
             scales: {
                 yAxes: [{
                     ticks: {
                         callback: function(label, index, labels) {
                             return "$" + addCommas(label);
-                        }
+                        },
+                        fontColor: "#FFF",
+                    }, 
+                    gridLines: {
+                        color: "rgba(255, 255, 255, 0.2)",
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: "#FFF",
+                    },
+                    gridLines: {
+                        color: "rgba(255, 255, 255, 0.2)",
                     }
                 }]
             }
