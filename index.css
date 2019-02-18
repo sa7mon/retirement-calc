@@ -1,3 +1,21 @@
+body {
+    background-color: rgb(37, 40, 48);
+    /*color: white;*/
+    color: rgb(207, 210, 218);
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    color: white;
+}
+
+button.btn-primary {
+    color: #1997c6;
+    background-color: transparent;
+    background-image: none;
+    border-color: #1997c6;
+}
+
 .hidden {
     display: none;
 }
