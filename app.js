@@ -77,8 +77,8 @@ function init() {
             
             datasets.push(result);
         }
-        drawChart1(datasets[0], datasets[1], datasets[2]);
-        drawChart2(datasets[0], datasets[1], datasets[2]);
+        drawChart1(datasets[0], datasets[1], datasets[2], 2);
+        drawChart2(datasets[0], datasets[1], datasets[2], 2);
         // createTable(datasets[0]);
     });
 }
@@ -110,18 +110,18 @@ function createTable(dataset) {
     }
 }
 
-function drawChart2(data1, data2, data3) {
+function drawChart2(data1, data2, data3, sampleRate) {
     var drawValues1 = data1.map(obj => { return obj.draw; });
-    var drawValues1Sampled = nthArray(drawValues1, 5);
+    var drawValues1Sampled = nthArray(drawValues1, sampleRate);
     
     var drawValues2 = data2.map(obj => { return obj.draw; });
-    var drawValues2Sampled = nthArray(drawValues2, 5);
+    var drawValues2Sampled = nthArray(drawValues2, sampleRate);
     
     var drawValues3 = data3.map(obj => { return obj.draw; });
-    var drawValues3Sampled = nthArray(drawValues3, 5);
+    var drawValues3Sampled = nthArray(drawValues3, sampleRate);
     
     var ages1 = data1.map(obj => { return obj.age; });
-    var ages1Sampled = nthArray(ages1, 5);
+    var ages1Sampled = nthArray(ages1, sampleRate);
     
     if (chart2 !== undefined) {
         console.log("Destroying chart2 before re-drawing");
@@ -204,22 +204,22 @@ function drawChart2(data1, data2, data3) {
 }
 
 
-function drawChart1(data1, data2, data3) {
+function drawChart1(data1, data2, data3, sampleRate) {
     var nesteggValues1 = data1.map(obj => { return obj.nest_egg; });
     var ages1 = data1.map(obj => { return obj.age; });
     
-    var nesteggValues1Sampled = nthArray(nesteggValues1, 5);
-    var ages1Sampled = nthArray(ages1, 5);
+    var nesteggValues1Sampled = nthArray(nesteggValues1, sampleRate);
+    var ages1Sampled = nthArray(ages1, sampleRate);
     
     var nesteggValues2 = data2.map(obj => { return obj.nest_egg; });
     // var ages2 = data2.map(obj => { return obj.age; });
     
-    var nesteggValues2Sampled = nthArray(nesteggValues2, 5);
+    var nesteggValues2Sampled = nthArray(nesteggValues2, sampleRate);
     
     var nesteggValues3 = data3.map(obj => { return obj.nest_egg; });
     // var ages3 = data3.map(obj => { return obj.age; });
     
-    var nesteggValues3Sampled = nthArray(nesteggValues3, 5);
+    var nesteggValues3Sampled = nthArray(nesteggValues3, sampleRate);
     
     if (chart1 !== undefined) {
         console.log("Destroying chart1 before re-drawing");
