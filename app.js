@@ -13,6 +13,42 @@ window.chartColors = {
 	grey: 'rgb(201, 203, 207)'
 };
 
+var rmds = {
+    /* https://www.irs.gov/pub/irs-tege/uniform_rmd_wksht.pdf */
+    70: 27.4,
+    71: 26.5,
+    72: 25.6,
+    73: 24.7,
+    74: 23.8,
+    75: 22.9,
+    76: 22.0,
+    77: 21.2,
+    78: 20.3,
+    79: 19.5,
+    80: 18.7,
+    81: 17.9,
+    82: 17.1,
+    83: 16.3,
+    84: 15.5,
+    85: 14.8,
+    86: 14.1,
+    87: 13.4,
+    88: 12.7,
+    89: 12.0,
+    90: 11.4,
+    91: 10.8,
+    92: 10.2,
+    93: 9.6,
+    94: 9.1,
+    95: 8.6,
+    96: 8.1,
+    97: 7.6,
+    98: 7.1,
+    99: 6.7,
+    100: 6.3,
+    101: 5.9
+}
+
 function init() {
     $("#form-1").submit(function(e) {
         e.preventDefault();
@@ -301,9 +337,13 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
         
         // Draw from nest egg if retired
         if (age >= retire_age && age < lame_age) { // in active retirement years
-            nest_egg_draw = active_years_income;
+            console.log("age:", age, "draw:", active_years_income, "rmd:", getRmd(age, current_nest_egg));
+            var rmd = getRmd(age, current_nest_egg);
+            nest_egg_draw = active_years_income > rmd ? active_years_income : rmd 
         } else if (age >= retire_age && age >= lame_age) { // in lame years
-            nest_egg_draw = lame_years_income;
+            console.log("age:", age, "draw:", lame_years_income, "rmd:", getRmd(age, current_nest_egg));
+            var rmd = getRmd(age, current_nest_egg);
+            nest_egg_draw = lame_years_income > rmd ? lame_years_income : rmd;
         }
         current_nest_egg -= nest_egg_draw
         
@@ -320,13 +360,19 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
             contrib: round(contribution, 2), draw: nest_egg_draw, interest: round(interest, 2),
             nest_egg: round(current_nest_egg, 2)
         };
-        // console.log(yearData);
+        
         returnData.push(yearData);
-        // console.log("age:", age, "retired:", is_retired, "salary:", round(current_salary, 2), 
-        // "contrib:", round(contribution, 2), "draw:", nest_egg_draw, "interest:", round(interest, 2), "nest egg:", round(current_nest_egg, 2));
     }
     
     return returnData;
+}
+
+function getRmd(age, nestegg_value) {
+    if (rmds[age] == undefined) {
+        return 0;   
+    }
+    
+    return nestegg_value / rmds[age];
 }
 
 

@@ -9,6 +9,14 @@ h2 {
     color: white;
 }
 
+#main-container {
+    margin-top: 75px;
+}
+
+.navbar-dark {
+    background-color: #1a1c22 !important;
+}
+
 button.btn-primary {
     color: #1997c6;
     background-color: transparent;
