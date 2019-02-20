@@ -76,7 +76,7 @@ function init() {
             var result = calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib_percent, 
                        retire_age, annual_nest_egg_grow_percent, lame_age, death_age, 
                        active_years_income, lame_years_income);
-            // console.log(result);
+            console.log(result);
             
             datasets.push(result);
         }
@@ -91,14 +91,18 @@ function init() {
 function showOutput(datasets) {
     for (var j = 0; j < 3; j++) {
         var highest_nest_egg = 0;
+        var total_income = 0;
+        
         for (var i = 0; i < datasets[j].length; i++) {
             var year = datasets[j][i];
             if (year.nest_egg > highest_nest_egg) {
                 highest_nest_egg = year.nest_egg;
             }
+            total_income += year.draw;
         }
         // console.log("Run " + (j+1) + " Max: ", highest_nest_egg);
-        $("#max-egg-run-"+(j+1)).text("$"+addCommas(highest_nest_egg));
+        $("#max-egg-run-"+(j+1)).text("$"+addCommas(round(highest_nest_egg, 2)));
+        $("#total-received-"+(j+1)).text("$"+addCommas(round(total_income, 2)));
     }
 }
 
