@@ -25,3 +25,13 @@
 * Created a table to output all the returned data, but ultimately decided this didn't add much value and was very large
 
 ## 2/17/19
+* I found a sample theme that I like a lot, so I copied some of the colors and elements from it to give the page a dark theme
+* After doing some testing with different input data, I determined it would just be too difficult to support runs with different starting and death ages, so I made them all share one form field for those ages
+* After that, I added just a few lines of code to support chart re-drawing. Now if the user has submitted the form, they can scroll back up, edit the inputs, and re-calculate with no problem
+
+## 2/19/19
+* Since we moved to a dark theme, the chart needed to be styled with lighter colors so it didn't blend into the page background. Changed the labels and gridlines to be white or gray
+* After taking some time to learn how RMD's work, I found a very simple worksheet on the IRS webiste to help calculate them [here](https://www.irs.gov/pub/irs-tege/uniform_rmd_wksht.pdf) 
+* I hard-coded the ages and distribution periods into the program since I couldn't find a good way to programmatically extract the data easily from the pdf
+* I successfully got the RMD calculations working and verified the charts looked roughly like the charts in the example from Dr. V
+* I then changed the graphs from being 50% screen width to being 100% wide and each having their own row. This lets us see a lot more detail, so I lowered the sample rate from 5 to 2
