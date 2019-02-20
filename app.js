@@ -55,7 +55,7 @@ function init() {
     $("#form-1").submit(function(e) {
         e.preventDefault();
         
-        $("#chart-row").removeClass("hidden");
+        $(".chart-row").removeClass("hidden");
         $("#table-row").removeClass("hidden");
         $("#output-row").removeClass("hidden");
         
