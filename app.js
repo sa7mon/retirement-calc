@@ -49,12 +49,15 @@ var rmds = {
     101: 5.9
 }
 
+var temp_datasets;
+
 function init() {
     $("#form-1").submit(function(e) {
         e.preventDefault();
         
         $("#chart-row").removeClass("hidden");
         $("#table-row").removeClass("hidden");
+        $("#output-row").removeClass("hidden");
         
         var datasets = [];
         
@@ -73,14 +76,30 @@ function init() {
             var result = calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib_percent, 
                        retire_age, annual_nest_egg_grow_percent, lame_age, death_age, 
                        active_years_income, lame_years_income);
-            console.log(result);
+            // console.log(result);
             
             datasets.push(result);
         }
+        temp_datasets = datasets;
         drawChart1(datasets[0], datasets[1], datasets[2], 2);
         drawChart2(datasets[0], datasets[1], datasets[2], 2);
         // createTable(datasets[0]);
+        showOutput(datasets);
     });
+}
+
+function showOutput(datasets) {
+    for (var j = 0; j < 3; j++) {
+        var highest_nest_egg = 0;
+        for (var i = 0; i < datasets[j].length; i++) {
+            var year = datasets[j][i];
+            if (year.nest_egg > highest_nest_egg) {
+                highest_nest_egg = year.nest_egg;
+            }
+        }
+        // console.log("Run " + (j+1) + " Max: ", highest_nest_egg);
+        $("#max-egg-run-"+(j+1)).text("$"+addCommas(highest_nest_egg));
+    }
 }
 
 function createTable(dataset) {
@@ -389,8 +408,7 @@ function nthArray(array, n) {
     return returnArray;
 }
 
-function addCommas(nStr)
-{
+function addCommas(nStr) {
     /** https://stackoverflow.com/a/26567557/2307994 **/
     nStr += '';
     var x = nStr.split('.');
