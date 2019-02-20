@@ -10,6 +10,14 @@ h2 {
     color: white;
 }
 
+.h2 {
+    margin-bottom: 25px;
+}
+
+.table {
+    color: white;
+}
+
 #main-container {
     margin-top: 75px;
 }

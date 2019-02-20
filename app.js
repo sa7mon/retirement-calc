@@ -83,7 +83,7 @@ function init() {
         temp_datasets = datasets;
         drawChart1(datasets[0], datasets[1], datasets[2], 2);
         drawChart2(datasets[0], datasets[1], datasets[2], 2);
-        // createTable(datasets[0]);
+        createTable(datasets);
         showOutput(datasets);
     });
 }
@@ -106,29 +106,18 @@ function showOutput(datasets) {
     }
 }
 
-function createTable(dataset) {
-    // for (var i = 0; i < Object.keys(dataset[0]).length; i++) {
-    //     var key = Object.keys(dataset[0])[i]; 
-    //     console.log(key);
-    // }
-
-    $("table#table thead tr").append("<td>Age</td>");
-    $("table#table thead tr").append("<td>Contribution</td>");
-    $("table#table thead tr").append("<td>Draw</td>");
-    $("table#table thead tr").append("<td>Interest</td>");
-    $("table#table thead tr").append("<td>Nest Egg</td>");
-    $("table#table thead tr").append("<td>Retired</td>");
-    $("table#table thead tr").append("<td>Salary</td>");
+function createTable(datasets) {
+    $("table#table thead tr").append("<td><strong>Age</strong></td>");
+    $("table#table thead tr").append("<td><strong>Run 1</strong></td>");
+    $("table#table thead tr").append("<td><strong>Run 2</strong></td>");
+    $("table#table thead tr").append("<td><strong>Run 3</strong></td>");
     
-    for (var i = 0; i < dataset.length; i++) {
+    for (var i = 0; i < datasets[0].length; i++) {
         $("table#table tbody").append(`<tr>
-        <td>${dataset[i].age}</td>
-        <td>${dataset[i].contrib}</td>
-        <td>${dataset[i].draw}</td>
-        <td>${dataset[i].interest}</td>
-        <td>${dataset[i].nest_egg}</td>
-        <td>${dataset[i].retired}</td>
-        <td>${dataset[i].salary}</td>
+        <td>$${datasets[0][i].age}</td>
+        <td>$${datasets[0][i].nest_egg}</td>
+        <td>$${datasets[1][i].nest_egg}</td>
+        <td>$${datasets[2][i].nest_egg}</td>
         </tr>`);
     }
 }
