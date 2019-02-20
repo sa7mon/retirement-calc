@@ -114,7 +114,7 @@ function createTable(datasets) {
     
     for (var i = 0; i < datasets[0].length; i++) {
         $("table#table tbody").append(`<tr>
-        <td>$${datasets[0][i].age}</td>
+        <td>${datasets[0][i].age}</td>
         <td>$${datasets[0][i].nest_egg}</td>
         <td>$${datasets[1][i].nest_egg}</td>
         <td>$${datasets[2][i].nest_egg}</td>
