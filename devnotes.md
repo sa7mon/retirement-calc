@@ -35,3 +35,17 @@
 * I hard-coded the ages and distribution periods into the program since I couldn't find a good way to programmatically extract the data easily from the pdf
 * I successfully got the RMD calculations working and verified the charts looked roughly like the charts in the example from Dr. V
 * I then changed the graphs from being 50% screen width to being 100% wide and each having their own row. This lets us see a lot more detail, so I lowered the sample rate from 5 to 2
+
+## 2/20/19
+* Since my MacBook doesn't have much screen real estate, I decided to make the navbar not stuck to the top of the screen. Now more of the page can be seen at one time. 
+* After re-reading the spec for Phase 2, I realized that we need to output the maximum nest egg size and total amount received over the lifetime of the retirement account.
+* I quickly got those 2 things to calculate and output to a field on the page
+* Spent some time organizing the page a bit with headings and style tweaks
+* I brought back the messy table I made before to show the nest egg size over time for each run 
+* Took time to move from using CDN links of javascript and css frameworks to using npm to concat and minify everything
+* This way, all necessary files will reside on the server and we won't depend on CDN links to stay valid since I won't be doing maintenance on this app after the class is over
+* Deployed to AWS and tested to make sure it was accessible
+
+
+
+
