@@ -76,7 +76,7 @@ function init() {
             var result = calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib_percent, 
                        retire_age, annual_nest_egg_grow_percent, lame_age, death_age, 
                        active_years_income, lame_years_income);
-            console.log(result);
+            // console.log(result);
             
             datasets.push(result);
         }
@@ -136,7 +136,7 @@ function drawChart2(data1, data2, data3, sampleRate) {
     var ages1Sampled = nthArray(ages1, sampleRate);
     
     if (chart2 !== undefined) {
-        console.log("Destroying chart2 before re-drawing");
+        // console.log("Destroying chart2 before re-drawing");
         chart2.destroy();
     }
     
@@ -234,7 +234,7 @@ function drawChart1(data1, data2, data3, sampleRate) {
     var nesteggValues3Sampled = nthArray(nesteggValues3, sampleRate);
     
     if (chart1 !== undefined) {
-        console.log("Destroying chart1 before re-drawing");
+        // console.log("Destroying chart1 before re-drawing");
         chart1.destroy();
     }
     
@@ -349,11 +349,11 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
         
         // Draw from nest egg if retired
         if (age >= retire_age && age < lame_age) { // in active retirement years
-            console.log("age:", age, "draw:", active_years_income, "rmd:", getRmd(age, current_nest_egg));
+            // console.log("age:", age, "draw:", active_years_income, "rmd:", getRmd(age, current_nest_egg));
             var rmd = getRmd(age, current_nest_egg);
             nest_egg_draw = active_years_income > rmd ? active_years_income : rmd 
         } else if (age >= retire_age && age >= lame_age) { // in lame years
-            console.log("age:", age, "draw:", lame_years_income, "rmd:", getRmd(age, current_nest_egg));
+            // console.log("age:", age, "draw:", lame_years_income, "rmd:", getRmd(age, current_nest_egg));
             var rmd = getRmd(age, current_nest_egg);
             nest_egg_draw = lame_years_income > rmd ? lame_years_income : rmd;
         }
