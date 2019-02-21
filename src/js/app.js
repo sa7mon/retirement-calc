@@ -107,10 +107,7 @@ function showOutput(datasets) {
 }
 
 function createTable(datasets) {
-    $("table#table thead tr").append("<td><strong>Age</strong></td>");
-    $("table#table thead tr").append("<td><strong>Run 1</strong></td>");
-    $("table#table thead tr").append("<td><strong>Run 2</strong></td>");
-    $("table#table thead tr").append("<td><strong>Run 3</strong></td>");
+    $("table#table tbody").html(""); // Clear the body first
     
     for (var i = 0; i < datasets[0].length; i++) {
         $("table#table tbody").append(`<tr>
@@ -349,11 +346,9 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
         
         // Draw from nest egg if retired
         if (age >= retire_age && age < lame_age) { // in active retirement years
-            // console.log("age:", age, "draw:", active_years_income, "rmd:", getRmd(age, current_nest_egg));
             var rmd = getRmd(age, current_nest_egg);
             nest_egg_draw = active_years_income > rmd ? active_years_income : rmd 
         } else if (age >= retire_age && age >= lame_age) { // in lame years
-            // console.log("age:", age, "draw:", lame_years_income, "rmd:", getRmd(age, current_nest_egg));
             var rmd = getRmd(age, current_nest_egg);
             nest_egg_draw = lame_years_income > rmd ? lame_years_income : rmd;
         }

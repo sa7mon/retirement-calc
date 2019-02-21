@@ -33,7 +33,6 @@ gulp.task('vendor-js', function(cb) {
     ], cb);
 });
 
-
 gulp.task('app-css', function(cb) {
     pump([
         gulp.src(['src/css/*.css']),
@@ -52,18 +51,9 @@ gulp.task('vendor-css', function(cb) {
     ], cb); 
 });
 
-// gulp.task('template-css', function(cb) {
-//     pump([
-//         gulp.src(['src/css/bootstrap-4.1.min.css']),
-//         concat('template.min.css'),
-//         uglifycss(),
-//         gulp.dest('dist/css/')
-//     ], cb); 
-// });
-
-// gulp.task('watch', function () {
-//     gulp.watch(['src/js/*.js'], gulp.series('app-js'));
-//     gulp.watch(['src/css/*.css'], gulp.series('app-css'));
-// });
+gulp.task('watch', function () {
+    gulp.watch(['src/js/*.js'], gulp.series('app-js', 'vendor-js'));
+    gulp.watch(['src/css/*.css'], gulp.series('app-css', 'vendor-css'));
+});
 
 gulp.task('default', gulp.series(parallel('app-js', 'vendor-js', 'app-css', 'vendor-css')), function() {});
