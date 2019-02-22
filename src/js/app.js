@@ -101,8 +101,8 @@ function showOutput(datasets) {
             total_income += year.draw;
         }
         // console.log("Run " + (j+1) + " Max: ", highest_nest_egg);
-        $("#max-egg-run-"+(j+1)).text("$"+addCommas(round(highest_nest_egg, 2)));
-        $("#total-received-"+(j+1)).text("$"+addCommas(round(total_income, 2)));
+        $("#max-egg-run-"+(j+1)).text("$"+addCommas(round2(highest_nest_egg)));
+        $("#total-received-"+(j+1)).text("$"+addCommas(round2(total_income)));
     }
 }
 
@@ -112,9 +112,9 @@ function createTable(datasets) {
     for (var i = 0; i < datasets[0].length; i++) {
         $("table#table tbody").append(`<tr>
         <td>${datasets[0][i].age}</td>
-        <td>$${datasets[0][i].nest_egg}</td>
-        <td>$${datasets[1][i].nest_egg}</td>
-        <td>$${datasets[2][i].nest_egg}</td>
+        <td>$${addCommas(datasets[0][i].nest_egg)}</td>
+        <td>$${addCommas(datasets[1][i].nest_egg)}</td>
+        <td>$${addCommas(datasets[2][i].nest_egg)}</td>
         </tr>`);
     }
 }
@@ -370,9 +370,9 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
         var interest = current_nest_egg * annual_nest_egg_grow_percent;
         current_nest_egg += interest;
         
-        var yearData = {age: age, retired: is_retired, salary: round(current_salary, 2),
-            contrib: round(contribution, 2), draw: actual_nest_egg_draw, interest: round(interest, 2),
-            nest_egg: round(current_nest_egg, 2)
+        var yearData = {age: age, retired: is_retired, salary: round2(current_salary),
+            contrib: round2(contribution), draw: actual_nest_egg_draw, interest: round2(interest),
+            nest_egg: round2(current_nest_egg)
         };
         
         returnData.push(yearData);
@@ -393,6 +393,10 @@ function getRmd(age, nestegg_value) {
 function round(value, decimals) {
     /* http://www.jacklmoore.com/notes/rounding-in-javascript/ */
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
+function round2(value) {
+    return parseFloat(Math.round(value * 100) / 100).toFixed(2);
 }
 
 function nthArray(array, n) {
