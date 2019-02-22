@@ -335,6 +335,7 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
     
     for (var age = initial_age + 1; age <= death_age; age++) {
         var nest_egg_draw = 0;
+        var actual_nest_egg_draw = 0;
         var is_retired = age >= retire_age ? true : false
         
         // Yearly salary increase
@@ -352,7 +353,13 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
             var rmd = getRmd(age, current_nest_egg);
             nest_egg_draw = lame_years_income > rmd ? lame_years_income : rmd;
         }
-        current_nest_egg -= nest_egg_draw
+        
+        if (current_nest_egg < nest_egg_draw) {
+            actual_nest_egg_draw = current_nest_egg;
+        } else {
+            actual_nest_egg_draw = nest_egg_draw;
+        }
+        current_nest_egg -= actual_nest_egg_draw;
         
         // Set nestegg to 0 if we've gone below 0
         if (current_nest_egg < 0) {
@@ -364,7 +371,7 @@ function calculate(initial_age, initial_nest_egg, initial_salary, annual_contrib
         current_nest_egg += interest;
         
         var yearData = {age: age, retired: is_retired, salary: round(current_salary, 2),
-            contrib: round(contribution, 2), draw: nest_egg_draw, interest: round(interest, 2),
+            contrib: round(contribution, 2), draw: actual_nest_egg_draw, interest: round(interest, 2),
             nest_egg: round(current_nest_egg, 2)
         };
         
